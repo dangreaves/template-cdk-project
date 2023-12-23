@@ -25,7 +25,7 @@ As an example, this template contains a single CDK app ([bin/cdk.ts](./bin/cdk.t
 
 ### Apps
 
-A CDK app is the top level logical group. You should probably only have one in your codebase, but you could technically have multiple. This template contains a single app which is defined in [bin/cdk.ts](./bin/cdk.ts). In the [cdk.json](./cdk.json) file, you will see that this app is defined via the "app" attribute.
+A CDK app is the top level logical group. You should probably only have one per AWS account, but you could technically have multiple. This template contains a single app which is defined in [bin/cdk.ts](./bin/cdk.ts). In the [cdk.json](./cdk.json) file, you will see that this app is defined via the "app" attribute.
 
 You can only deploy one app at a time.
 
