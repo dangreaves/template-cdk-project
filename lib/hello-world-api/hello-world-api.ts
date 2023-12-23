@@ -12,6 +12,7 @@ export interface HelloWorldApiProps {
 export class HelloWorldApi extends Construct {
   protected readonly handler: lambda.Function;
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   constructor(scope: Construct, id: string, _props: HelloWorldApiProps) {
     super(scope, id);
 
