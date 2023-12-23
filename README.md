@@ -93,3 +93,4 @@ This template has the following tools configured.
 - [commander](https://github.com/tj/commander.js)
 - [typescript](https://www.typescriptlang.org)
 - [lint-staged](https://github.com/lint-staged/lint-staged)
+- [eslint](https://eslint.org) and [typescript-eslint](https://typescript-eslint.io)
