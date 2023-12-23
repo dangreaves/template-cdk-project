@@ -6,6 +6,7 @@
   "version": "0.0.0",
   "scripts": {
     "prepare": "husky install",
+    "format": "prettier --write .",
     "deploy": "cdk deploy",
     "destroy": "cdk destroy",
     "bootstrap": "cdk bootstrap",
