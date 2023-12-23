@@ -1,0 +1,32 @@
+{
+  "name": "@dangreaves/template-cdk",
+  "private": true,
+  "type": "module",
+  "license": "MIT",
+  "version": "0.0.0",
+  "scripts": {
+    "prepare": "husky install",
+    "deploy": "cdk deploy",
+    "destroy": "cdk destroy",
+    "bootstrap": "cdk bootstrap",
+    "synthesize": "cdk synthesize"
+  },
+  "dependencies": {
+    "aws-cdk-lib": "2.116.1",
+    "constructs": "^10.3.0"
+  },
+  "devDependencies": {
+    "@tsconfig/node20": "^20.1.2",
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/aws-lambda": "^8.10.130",
+    "@types/node": "^20",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "prettier": "^3.0.3",
+    "tsx": "^4.0.0",
+    "typescript": "^5.2.2"
+  },
+  "lint-staged": {
+    "*.{js,ts,css,md}": "prettier --write"
+  }
+}
