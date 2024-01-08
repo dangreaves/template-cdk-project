@@ -97,16 +97,28 @@ Boostrap your AWS account.
 npm run bootstrap
 ```
 
-Deploy your CDK stack.
+Deploy a single stack.
 
 ```
-npm run deploy
+npm run deploy -- hello-world
 ```
 
-Destroy your CDK stack.
+Deploy all stacks.
 
 ```
-npm run destroy
+npm run deploy -- --all
+```
+
+Destroy a single CDK stack.
+
+```
+npm run destroy -- hello-world
+```
+
+Destroy all stacks.
+
+```
+npm run destroy -- --all
 ```
 
 Synthesize your CDK stack to CloudFormation (useful for debugging).

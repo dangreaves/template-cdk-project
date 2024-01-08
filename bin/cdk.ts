@@ -15,4 +15,4 @@ const env: cdk.Environment = {
 // Uncomment this if you need a VPC.
 // const { vpc } = new VpcStack(app, "vpc", { env });
 
-new HelloWorldStack(app, "HelloWorldStack", { env });
+new HelloWorldStack(app, "hello-world", { env });
