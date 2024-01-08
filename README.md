@@ -5,28 +5,37 @@
 This template is a starting point for building [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) projects with [TypeScript](https://www.typescriptlang.org).
 
 1. [New to CDK?](#new-to-cdk)
-2. [Getting started](#getting-started)
-3. [Structure](#structure)
+2. [Cloning this template](#cloning-this-template)
+3. [Authentication](#authentication)
+4. [Structure](#structure)
    1. [Apps](#apps)
    2. [Stacks](#stacks)
    3. [Constructs](#constructs)
    4. [Functions](#functions)
-4. [Environment](#environment)
-5. [VPC](#vpc)
-6. [Commands](#commands)
+5. [Environment](#environment)
+6. [VPC](#vpc)
+7. [Commands](#commands)
 
 ## New to CDK?
 
 If you are new to the AWS CDK, I highly recommend reading the [CDK TypeScript Workshop](https://cdkworkshop.com/20-typescript.html). This template loosely matches the directory structure defined in that guide.
 
-## Getting started
+## Cloning this template
 
-The easiest way to get started with this template is to use [degit](https://github.com/Rich-Harris/degit).
+The easiest way to get clone this template is to use [degit](https://github.com/Rich-Harris/degit).
 
 ```sh
 npm install -g degit
 degit dangreaves/template-cdk-project my-cdk-project
 ```
+
+## Authentication
+
+Before being able to use AWS CDK, you will need to authenticate with your AWS account. You can use of the many methods, but the the easiest way I have found is to use [Leapp](https://www.leapp.cloud), which is a GUI for AWS authentication.
+
+My preferred approach is to configure [AWS IAM Identity Center](https://aws.amazon.com/iam/identity-center) (even if you only have one account). Then configure Leapp with the [AWS Single Sign-On integration](https://docs.leapp.cloud/latest/configuring-integration/configure-aws-single-sign-on-integration/).
+
+Once it's setup, all you need to do is click your profile inside Leapp, complete your SSO login information and you're good to go.
 
 ## Structure
 
