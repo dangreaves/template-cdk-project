@@ -1,8 +1,18 @@
 #!/usr/bin/env node
 import * as cdk from "aws-cdk-lib";
 
-import { HelloWorldStack } from "../lib/hello-world-stack.js";
+// import { VpcStack } from "@/lib/stacks/vpc.js";
+import { HelloWorldStack } from "@/lib/stacks/hello-world.js";
 
 const app = new cdk.App();
 
-new HelloWorldStack(app, "HelloWorldStack");
+// @todo Set your account ID and region here.
+const env: cdk.Environment = {
+  account: "123456789",
+  region: "ap-southeast-2",
+};
+
+// Uncomment this if you need a VPC.
+// const { vpc } = new VpcStack(app, "vpc", { env });
+
+new HelloWorldStack(app, "HelloWorldStack", { env });

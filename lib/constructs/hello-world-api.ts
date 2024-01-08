@@ -18,7 +18,7 @@ export class HelloWorldApi extends Construct {
 
     // Create lambda handler for hello world response.
     const handler = new nodejs.NodejsFunction(this, "Handler", {
-      entry: "lib/hello-world-api/hello-world-handler.ts",
+      entry: "src/hello-world-handler.ts",
     });
 
     // Create integration to connect with lambda.

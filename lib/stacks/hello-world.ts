@@ -1,6 +1,6 @@
 import * as cdk from "aws-cdk-lib";
 
-import { HelloWorldApi } from "./hello-world-api/hello-world-api.js";
+import { HelloWorldApi } from "@/lib/constructs/hello-world-api.js";
 
 export class HelloWorldStack extends cdk.Stack {
   constructor(scope: cdk.App, id: string, props?: cdk.StackProps) {
