@@ -1,6 +1,6 @@
 # Template for TypeScript AWS CDK v2 projects
 
-![GitHub License](https://img.shields.io/github/license/dangreaves/template-cdk)
+![GitHub License](https://img.shields.io/github/license/dangreaves/template-cdk-project)
 
 This template is a starting point for building [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) projects with [CDK Pipelines](https://docs.aws.amazon.com/cdk/v2/guide/cdk_pipeline.html) and [TypeScript](https://www.typescriptlang.org).
 
