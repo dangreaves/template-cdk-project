@@ -2,17 +2,19 @@
 
 ![GitHub License](https://img.shields.io/github/license/dangreaves/template-cdk)
 
-This template is a starting point for building [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) projects with [TypeScript](https://www.typescriptlang.org).
+This template is a starting point for building [AWS CDK v2](https://docs.aws.amazon.com/cdk/api/v2/docs/aws-construct-library.html) projects with [CDK Pipelines](https://docs.aws.amazon.com/cdk/v2/guide/cdk_pipeline.html) and [TypeScript](https://www.typescriptlang.org).
 
 1. [New to CDK?](#new-to-cdk)
 2. [Cloning this template](#cloning-this-template)
 3. [Authentication](#authentication)
+   1. [GitHub token](#github-token)
 4. [Structure](#structure)
    1. [Apps](#apps)
-   2. [Stacks](#stacks)
-   3. [Constructs](#constructs)
-   4. [Functions](#functions)
-5. [Environment](#environment)
+   2. [Stages](#stages)
+   3. [Stacks](#stacks)
+   4. [Constructs](#constructs)
+   5. [Functions](#functions)
+5. [Accounts](#accounts)
 6. [VPC](#vpc)
 7. [Commands](#commands)
 
@@ -37,11 +39,23 @@ My preferred approach is to configure [AWS IAM Identity Center](https://aws.amaz
 
 Once it's setup, all you need to do is click your profile inside Leapp, complete your SSO login information and you're good to go.
 
+### GitHub token
+
+If your CDK repository is hosted in GitHub, AWS will need a token to be able to access it from the pipeline.
+
+You should create a GitHub personal token, which has read access to the contents of the repository, and write access to webhooks.
+
+Create a secret in AWS Secrets Manager with the name `github-token`, and the plaintext content as the personal access token.
+
+AWS will automatically use this secret when accessing your GitHub repository for the pipeline source.
+
 ## Structure
 
-This template is organised into logical groups according to the [Construct best practices](https://docs.aws.amazon.com/cdk/v2/guide/best-practices.html#best-practices-constructs).
+This template is organised into logical groups according to the [Construct best practices](https://docs.aws.amazon.com/cdk/v2/guide/best-practices.html#best-practices-constructs) and the [CDK Pipelines](https://docs.aws.amazon.com/cdk/v2/guide/cdk_pipeline.html) guide.
 
-As an example, this template contains a single CDK app ([bin/cdk.ts](./bin/cdk.ts)) which contains the [HelloWorldStack](./lib/stacks/hello-world.ts) which itself contains the [HelloWorldApi](./lib/constructs/hello-world-api.ts) construct. The construct builds a simple API using API Gateway and AWS Lambda, which returns the message "Hello world".
+In the ([bin/cdk.ts](./bin/cdk.ts)) entrypoint, you will find a single CDK app which contains the [CDKPipelineStack](./lib/stacks/cdk-pipeline.ts) stack.
+
+Within the pipeline stack, you will find two stages (`infra` and `app`). These stages are self-deployed by the pipeline each time a commit is pushed to this repository.
 
 ### Apps
 
@@ -55,9 +69,21 @@ If you wanted to add an additional app, you should add it to the lib directory. 
 npm run deploy -- --app "npx tsx bin/app2.ts"
 ```
 
+Apps should be placed into the `bin` directory.
+
+### Stages
+
+A CDK pipeline stage represents a group of stacks which are deployed together.
+
+Stages can be deployed to other AWS accounts, as long as you have configured a trust relationship between them.
+
+Stages should be placed into the `lib/stages` directory.
+
 ### Stacks
 
-A stack represents a single CloudFormation stack. You can have multiple stacks within a CDK app. The contents of each stack should be a single deployable unit of your app, as you cannot deploy only part of a stack. Therefore, you might put your database into one stack, with your frontend app into another, such that they can be deployed independently.
+A stack represents a single CloudFormation stack. You can have multiple stacks within a CDK app or stage.
+
+The contents of each stack should be a single deployable unit of your app, as you cannot deploy only part of a stack. Therefore, you might put your database into one stack, with your frontend app into another, such that they can be deployed independently.
 
 In this template, there is a [HelloWorldStack](./lib/stacks/hello-world.ts) and a [VpcStack](./lib/stacks/vpc.ts).
 
@@ -77,17 +103,19 @@ In this template, the code for the "hello world" API is contained in [src/hello-
 
 You should place any runtime code in the `src` directory.
 
-## Environment
+## Accounts
 
-In [bin/cdk.ts](./bin/cdk.ts), you will find an `env` variable where you should set your AWS account ID and region. There are lots of CDK features which are only possible when the CDK knows up front which account you're deploying to.
+In [lib/utils/accounts.ts](./lib/utils/accounts.ts), you will find a variable where you should set your AWS account ID and region.
+
+These accounts are imported and referenced when defining the CDK pipeline stages.
+
+There are lots of CDK features which are only possible when the CDK knows up front which account you're deploying to.
 
 You can read more about this in the CDK [Environments](https://docs.aws.amazon.com/cdk/v2/guide/environments.html) documentation.
 
 ## VPC
 
-If you're building anything which requires a VPC, then this should be the first thing you configure. An example [VpcStack](./lib/stacks/vpc.ts) has been added which you should edit stack to your requirements. The example is configured to be cheap, rather than reliable.
-
-When you're done, you will need to uncomment it in [bin/cdk.ts](./bin/cdk.ts), where you can then use it as a dependency for other stacks.
+If you're building anything which requires a VPC, then this should be the first thing you configure. An example [VpcStack](./lib/stacks/vpc.ts) has been added which you should edit to your requirements. The example is configured to be cheap, rather than reliable.
 
 ## Commands
 
@@ -100,7 +128,7 @@ npm run bootstrap
 Deploy a single stack.
 
 ```
-npm run deploy -- hello-world
+npm run deploy -- cdk-pipeline
 ```
 
 Deploy all stacks.
@@ -112,7 +140,7 @@ npm run deploy -- --all
 Destroy a single CDK stack.
 
 ```
-npm run destroy -- hello-world
+npm run destroy -- cdk-pipeline
 ```
 
 Destroy all stacks.
