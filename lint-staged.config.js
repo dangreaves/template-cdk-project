@@ -1,3 +1,4 @@
+/** @type {import("lint-staged").Config} */
 export default {
   "**/*.{js,ts}": "eslint",
   "**/*.ts": "tsc-files --noEmit",
