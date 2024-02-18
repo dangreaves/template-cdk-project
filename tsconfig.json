@@ -11,5 +11,5 @@
       "#constructs/*": ["./lib/constructs/*"]
     }
   },
-  "include": ["bin", "lib", "src"]
+  "include": ["bin", "lib", "src", "*.js", "*.ts"]
 }
