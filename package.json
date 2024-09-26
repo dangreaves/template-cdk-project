@@ -5,7 +5,7 @@
   "license": "MIT",
   "version": "0.0.0",
   "scripts": {
-    "typecheck": "tsc --noEmit",
+    "types": "tsc --noEmit",
     "format": "prettier --write .",
     "deploy": "cdk deploy",
     "destroy": "cdk destroy",
