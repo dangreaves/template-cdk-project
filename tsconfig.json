@@ -1,15 +1,14 @@
 {
-  "extends": ["@tsconfig/strictest/tsconfig", "@tsconfig/node20/tsconfig"],
   "compilerOptions": {
     "noEmit": true,
-    "exactOptionalPropertyTypes": false,
+    "strict": true,
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
     "baseUrl": ".",
     "paths": {
-      "#utils/*": ["./lib/utils/*"],
-      "#stacks/*": ["./lib/stacks/*"],
-      "#stages/*": ["./lib/stages/*"],
-      "#constructs/*": ["./lib/constructs/*"]
+      "#": ["./lib/*"],
+      "~": ["./src/*"],
     }
   },
-  "include": ["bin", "lib", "src", "*.js", "*.ts"]
+  "include": ["bin/**/*", "lib/**/*", "src/**/*"]
 }
