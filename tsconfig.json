@@ -6,8 +6,8 @@
     "moduleResolution": "NodeNext",
     "baseUrl": ".",
     "paths": {
-      "#": ["./lib/*"],
-      "~": ["./src/*"]
+      "#/*": ["./lib/*"],
+      "~/*": ["./src/*"]
     }
   },
   "include": ["bin/**/*", "lib/**/*", "src/**/*"]

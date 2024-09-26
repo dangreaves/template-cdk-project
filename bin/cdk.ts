@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import * as cdk from "aws-cdk-lib";
 
-import * as accounts from "#utils/accounts.js";
+import * as accounts from "#/utils/accounts.js";
 
-import { CDKPipelineStack } from "#stacks/cdk-pipeline.js";
+import { CDKPipelineStack } from "#/stacks/cdk-pipeline.js";
 
 const app = new cdk.App();
 

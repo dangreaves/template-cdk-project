@@ -2,7 +2,7 @@ import { Construct } from "constructs";
 
 import * as cdk from "aws-cdk-lib";
 
-import { VpcStack } from "#stacks/vpc.js";
+import { VpcStack } from "#/stacks/vpc.js";
 
 /**
  * Deploy infrastructure resources.

@@ -3,10 +3,10 @@ import { Construct } from "constructs";
 import * as cdk from "aws-cdk-lib";
 import * as pipelines from "aws-cdk-lib/pipelines";
 
-import * as accounts from "#utils/accounts.js";
+import * as accounts from "#/utils/accounts.js";
 
-import { AppStage } from "#stages/app.js";
-import { InfraStage } from "#stages/infra.js";
+import { AppStage } from "#/stages/app.js";
+import { InfraStage } from "#/stages/infra.js";
 
 export interface CDKPipelineStackProps extends cdk.StackProps {
   //

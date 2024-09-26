@@ -2,7 +2,7 @@ import { Construct } from "constructs";
 
 import * as cdk from "aws-cdk-lib";
 
-import { HelloWorldStack } from "#stacks/hello-world.js";
+import { HelloWorldStack } from "#/stacks/hello-world.js";
 
 /**
  * Deploy app.
